@@ -12,12 +12,18 @@ You can assume that the 2nd number passed in will always be greater than the fir
 Note: This problem should account for negative number input
 */
 
-function sumOfOdds(){
 
+const sumOfOdds = (min, max, step) => {
+    let arr = [];
+    for (let i = min; i <= max; i += step) {
+        arr.push(i)
+    }
+    return arr
 }
 
+
 /* console.logs to test */
-console.log("sumOfOdds");
+console.log(`Answer to Sum of Odds: ?`,sumOfOdds(5, 10));
 console.log("////////////////////////////////////////////////////////////////////////////\n");
 //Add console.logs here to test!  Feel free to format this section however you like
 
@@ -26,16 +32,25 @@ console.log("\n/////////////////////////////////////////////////////////////////
 /*
 Write a function arraySubtract that takes in 2 arrays of numbers and subtracts the item in each index at array 1 with its respective item in each index at array 2.
 The result of each calculation should be placed in a new array and that array should be returned when the calculations are complete.
-For exmaple arraySubtract([7,9],[2,6]) should return [5,3]
+For example arraySubtract([7,9],[2,6]) should return [5,3]
 You can assume the arrays that are being input are of the same length
 */
 
-function arraySubtract(){
+let arr1 = [1, 2, 3, 4]
+let arr2 = [9, 8, 7, 5]
 
+const arraySubtract = (arr1, arr2) => {
+    const sum = [];
+    for (let i = 0; i < arr1.length; i++) {
+        //RETURNS ABSOLUTE VALUE REGARDLESS OF NEGATIVE NUM 
+        const element = Math.abs((arr1[i] || 0) - (arr2[i] || 0))
+        sum[i] = element
+    }
+    return sum
 }
 
 /* console.logs to test */
-console.log("arraySubtract");
+console.log(`Array Subtract Answer: `,arraySubtract(arr1, arr2));
 console.log("////////////////////////////////////////////////////////////////////////////\n");
 //Add console.logs here to test!  Feel free to format this section however you like
 
@@ -49,12 +64,17 @@ Add the second string to the end of the array
 Return the modified array
 */
 
-function surroundArray(){
+// let array3 = ["Rabbit", "Dog", "Cat"];
+// let string1 = "Lion";
+// let string2 = 'Tiger';
 
-}
+// const surroundArray = (array3, string1, string2) => {
+//     const merge = 
+// }
 
-/* console.logs to test */
-console.log("surroundArray");
+// /* console.logs to test */
+// console.log(`Surround Array Answer`, surroundArray(array3, string1, string2));
+console.log(`Answer to Surround Array: ?`);
 console.log("////////////////////////////////////////////////////////////////////////////\n");
 //Add console.logs here to test!  Feel free to format this section however you like
 
@@ -67,12 +87,19 @@ If there is nothing in the array, return an empty string ('')
 You can assume that no two strings will have the same length in the array
 */
 
-function longestString(){
-    
-}
 
-/* console.logs to test */
-console.log("longestString");
+function findLongestWord(array) {
+    var longestWord = "";
+    array.forEach(function(word) {
+      if(word.length > longestWord.length) {
+        longestWord = word;
+      }
+    });
+    return longestWord;
+}
+  const word = findLongestWord(["The","quick","brown", "fox", "jumped", "over", "the", "lazy", "dog"]);
+  console.log(`Longest String Answer: `,word);
+
 console.log("////////////////////////////////////////////////////////////////////////////\n");
 //Add console.logs here to test!  Feel free to format this section however you like
 
@@ -85,12 +112,11 @@ If the letter in the original string is uppercase the letter in the output strin
 Do NOT use replaceAll or similar string methods.  If you are unsure what that means, ask before you use a string method!  (toUpperCase() and toLowerCase() should be all you need if anything)
 */
 
-function sToR(){
-
+const sToR = (text) => {
+    //Cannot use replace 😮‍💨
 }
-
 /* console.logs to test */
-console.log("sToR");
+console.log(`Answer to sToR: ?`,sToR('ABSORBED'));
 console.log("////////////////////////////////////////////////////////////////////////////\n");
 //Add console.logs here to test!  Feel free to format this section however you like
 
@@ -102,12 +128,16 @@ Write a function divisibleBy4And7 that takes in a number and returns true if it 
 If it is not, return false.
 */
 
-function divisibleBy4And7(){
-
+const divisibleBy4And7 = (num) => {
+    if (num % 4 === 0 && num % 7 === 0) {
+        return true
+    } else {
+        return false
+    }
 }
 
 /* console.logs to test */
-console.log("divisibleBy4And7");
+console.log(`Answer to is Divisible by 4 and 7: `,divisibleBy4And7(140));
 console.log("////////////////////////////////////////////////////////////////////////////\n");
 //Add console.logs here to test!  Feel free to format this section however you like
 
@@ -120,12 +150,13 @@ return true if the string contains both an exclamation point (!) AND a question 
 Return false if otherwise
 */
 
-function exclamationAndQuestion(){
-    
+const exclamationAndQuestion = (str) => {
+   const regexp = /\.*[?!].*/g;
+   return regexp.test(str);
 }
 
 /* console.logs to test */
-console.log("exclamationAndQuestion");
+console.log(`Answer to exclaim and question: `,exclamationAndQuestion("Happy Birthday?!"));
 console.log("////////////////////////////////////////////////////////////////////////////\n");
 //Add console.logs here to test!  Feel free to format this section however you like
 
@@ -138,12 +169,37 @@ No need to add the count of A and B together.  Again, we want an array with the 
 Your function should account for both cases (upper and lower) of each letter.
 */
 
-function countAB(){
 
-}
+// const countAB = (str) => {
+//     let string = str.toLowerCase();
+//     const counts = []
+//     for (const char of string) {
+//         counts[char] = counts[char]  ? counts[char] + 1 : 1;
+//     }
+//     return counts
+// }
+
+const countAB = (str) => {
+    let a = [],
+      b = [],
+      arr = [...str],
+      prev;
+  
+    arr.sort();
+    for (let element of str) {
+      if (element !== prev) {
+        a.push(element);
+        b.push(1);
+      }
+      else ++b[b.length - 1];
+      prev = element;
+    }
+  
+    return [a, b];
+  }
 
 /* console.logs to test */
-console.log("countAB");
+console.log(`Count AB Answer: `,countAB("aabbbccdd"));
 console.log("////////////////////////////////////////////////////////////////////////////\n");
 //Add console.logs here to test!  Feel free to format this section however you like
 
@@ -162,7 +218,7 @@ function addStringIfLastS(){
 }
 
 /* console.logs to test */
-console.log("addStringIfLastS");
+console.log(`Adds String If Last ?`);
 console.log("////////////////////////////////////////////////////////////////////////////\n");
 //Add console.logs here to test!  Feel free to format this section however you like
 
@@ -176,12 +232,16 @@ If the array is shorter than length 2, return undefined to the user
 You can assume that every number in the array will be unique
 */
 
-function twoSmallest(){
+// const twoSmallest = (arr) => {
+//     smallest = numbers.sort((a, b) => {
+//         return a - b;
+//     })
+// }
 
-}
+// let arr = [12, 13, 1, 10, 34]
 
-/* console.logs to test */
-console.log("twoSmallest");
+// /* console.logs to test */
+console.log(`Two Smallest Answer: ?`);
 console.log("////////////////////////////////////////////////////////////////////////////\n");
 //Add console.logs here to test!  Feel free to format this section however you like
 
